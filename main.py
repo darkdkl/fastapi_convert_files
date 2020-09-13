@@ -22,10 +22,8 @@ async def load_file(file: UploadDocImgFile = File(...)):
 
 
 def remove_file(file:str):
-    print('до')
     time.sleep(2)
     os.remove(os.path.abspath(file))
-    print("после")
 
 
 @app.get('/file/')
@@ -34,4 +32,3 @@ async def get_file(file: str,background_tasks: BackgroundTasks):
         background_tasks.add_task(remove_file,file)
         return FileResponse(os.path.abspath(file))
 
-#именование файлов
